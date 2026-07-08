@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reunion — A Relationship Transformation Retreat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5EE;
+    --paper-warm:#E8ECDF;
+    --sage-panel:#DDE9E4;
+    --pine:#173D3B;
+    --pine-soft:#2F5A56;
+    --coral:#1B8A7E;
+    --coral-deep:#116C62;
+    --honey:#D2A63C;
+    --rose:#DCEAE4;
+    --text-soft:#3F5A56;
+    --line:color-mix(in srgb, var(--pine) 14%, transparent);
+    --line-soft:color-mix(in srgb, var(--pine) 9%, transparent);
+    --max:1140px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--pine);
+    font-family:'Mulish',sans-serif;
+    font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500;line-height:1.06;letter-spacing:-0.012em;}
+  em{font-style:italic;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  .eyebrow{
+    font-family:'Mulish',sans-serif;font-size:12px;font-weight:800;
+    letter-spacing:0.24em;text-transform:uppercase;color:var(--coral-deep);
+  }
+
+  /* ---------- Sunrise signature divider ---------- */
+  .sunrise{display:flex;justify-content:center;margin:0 auto;padding:70px 0;}
+  .sunrise svg{width:190px;height:auto;overflow:visible;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-block;font-family:'Mulish',sans-serif;font-weight:800;
+    font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+    padding:16px 32px;border-radius:100px;text-decoration:none;
+    transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 12px 26px -10px color-mix(in srgb, var(--coral) 55%, transparent);}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--coral-deep);}
+  .btn-ghost{border:1.5px solid var(--pine);color:var(--pine);}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--pine);color:var(--paper);}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 32px;transition:background .3s ease,box-shadow .3s ease,padding .3s ease;
+  }
+  header.nav.scrolled{background:rgba(251,246,238,0.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line-soft);padding:14px 32px;}
+  header.nav .mark{font-family:'Fraunces',serif;font-size:20px;font-weight:600;letter-spacing:0.01em;display:flex;align-items:center;gap:9px;}
+  header.nav .mark .seed{width:9px;height:9px;border-radius:50%;background:var(--coral);}
+  header.nav .cta-mini{font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:11px 22px;border-radius:100px;background:var(--coral);color:#fff;text-decoration:none;transition:background .25s;}
+  header.nav .cta-mini:hover{background:var(--coral-deep);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+    padding:150px 0 90px;
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-10%;right:-20%;width:60%;height:120%;
+    background:radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--honey) 22%, transparent), transparent 60%);
+    pointer-events:none;z-index:-1;
+  }
+  .hero .eyebrow{margin-bottom:24px;display:inline-block;}
+  .hero h1{font-size:clamp(2.8rem,5.6vw,4.6rem);color:var(--pine);}
+  .hero h1 em{color:var(--coral-deep);}
+  .hero .tagline{margin-top:24px;font-size:1.16rem;color:var(--text-soft);max-width:480px;font-weight:500;}
+  .hero .meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;}
+  .hero .meta .pill{font-size:12.5px;font-weight:700;letter-spacing:0.04em;padding:8px 16px;border-radius:100px;background:var(--sage-panel);color:var(--pine-soft);}
+  .hero .cta-row{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  .hero-photo{position:relative;}
+  .hero-photo .frame{
+    border-radius:180px 180px 14px 14px;overflow:hidden;
+    aspect-ratio:4/5;box-shadow:0 30px 60px -24px color-mix(in srgb, var(--pine) 40%, transparent);
+  }
+  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;}
+  .hero-photo .tag{
+    position:absolute;bottom:22px;left:-18px;background:var(--paper);
+    padding:12px 20px;border-radius:100px;box-shadow:0 12px 26px -12px color-mix(in srgb, var(--pine) 35%, transparent);
+    font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--pine);
+  }
+  .hero-photo .tag b{color:var(--coral-deep);font-style:normal;font-weight:600;}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr;gap:44px;padding:130px 0 70px;text-align:left;}
+    .hero-photo{max-width:380px;}
+  }
+
+  /* ---------- Section base ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:660px;margin-bottom:56px;}
+  .section-head .eyebrow{display:inline-block;margin-bottom:16px;}
+  .section-head h2{font-size:clamp(2rem,4.2vw,3.1rem);color:var(--pine);}
+  .section-head p{margin-top:18px;color:var(--text-soft);font-size:1.08rem;}
+
+  /* ---------- Story: pain -> possibility ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -30px color-mix(in srgb, var(--pine) 30%, transparent);}
+  .story-col{padding:52px 46px;}
+  .story-col.pain{background:var(--paper-warm);}
+  .story-col.result{background:var(--pine);color:var(--paper);}
+  .story-col .eyebrow{margin-bottom:18px;}
+  .story-col.result .eyebrow{color:var(--honey);}
+  .story-col h3{font-size:1.6rem;margin-bottom:14px;}
+  .story-col p{color:var(--text-soft);}
+  .story-col.result p{color:rgba(251,246,238,0.75);}
+  .story-col ul{list-style:none;margin-top:24px;}
+  .story-col li{padding:12px 0 12px 26px;position:relative;border-top:1px solid var(--line-soft);}
+  .story-col.result li{border-top:1px solid rgba(251,246,238,0.16);color:rgba(251,246,238,0.9);}
+  .story-col li::before{content:"";position:absolute;left:0;top:19px;width:11px;height:11px;border-radius:50%;background:var(--coral);}
+  .story-col.result li::before{background:var(--honey);}
+  @media (max-width:800px){.story-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Community strip ---------- */
+  .community{display:grid;grid-template-columns:0.9fr 1.1fr;gap:52px;align-items:center;margin-top:90px;}
+  .community .photo{border-radius:20px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 24px 50px -26px color-mix(in srgb, var(--pine) 40%, transparent);}
+  .community .photo img{width:100%;height:100%;object-fit:cover;object-position:center 26%;}
+  .community h3{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--pine);}
+  .community h3 em{color:var(--coral-deep);}
+  .community p{margin-top:16px;color:var(--text-soft);}
+  @media (max-width:800px){.community{grid-template-columns:1fr;gap:32px;}}
+
+  /* ---------- Ethos: retreat & festival ---------- */
+  .ethos{
+    border-radius:28px;text-align:center;padding:72px 40px;
+    background:
+      radial-gradient(ellipse 70% 90% at 20% 15%, color-mix(in srgb, var(--coral) 16%, transparent), transparent 60%),
+      radial-gradient(ellipse 70% 90% at 85% 90%, color-mix(in srgb, var(--honey) 22%, transparent), transparent 60%),
+      var(--rose);
+  }
+  .ethos .eyebrow{display:inline-block;margin-bottom:16px;}
+  .ethos h2{font-size:clamp(2rem,4.4vw,3.1rem);color:var(--pine);max-width:640px;margin:0 auto;}
+  .ethos h2 em{color:var(--coral-deep);}
+  .ethos .lede{margin:20px auto 0;max-width:600px;color:var(--text-soft);font-size:1.08rem;}
+  .ethos .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:34px auto 30px;max-width:760px;}
+  .ethos .chip{font-size:13px;font-weight:700;letter-spacing:0.02em;padding:9px 18px;border-radius:100px;}
+  .ethos .chip.deep{background:var(--pine);color:var(--paper);}
+  .ethos .chip.play{background:#fff;color:var(--coral-deep);border:1.5px solid color-mix(in srgb, var(--coral) 45%, transparent);}
+  .ethos .closer{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--pine-soft);max-width:560px;margin:0 auto;}
+  .ethos .closer b{font-style:normal;font-weight:600;color:var(--coral-deep);}
+
+  /* ---------- Experience arc ---------- */
+  .arc-section{background:var(--sage-panel);border-radius:28px;padding:80px 0;}
+  .arc{display:flex;flex-direction:column;}
+  .movement{
+    display:grid;grid-template-columns:76px 1fr;gap:30px;
+    padding:30px 0;border-top:1px solid color-mix(in srgb, var(--pine) 12%, transparent);align-items:start;
+  }
+  .movement:last-child{border-bottom:1px solid color-mix(in srgb, var(--pine) 12%, transparent);}
+  .movement .num{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--coral-deep);font-weight:500;}
+  .movement h4{font-size:1.35rem;font-family:'Fraunces',serif;font-weight:500;color:var(--pine);margin-bottom:8px;}
+  .movement p{color:var(--text-soft);max-width:620px;}
+  @media (max-width:560px){.movement{grid-template-columns:1fr;gap:6px;}}
+
+  /* ---------- Video band ---------- */
+  .video-band{position:relative;width:100%;height:66vh;min-height:440px;max-height:720px;overflow:hidden;background:var(--pine);}
+  .video-band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .video-band .veil{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb, var(--pine) 28%, transparent) 0%,transparent 34%,transparent 55%,color-mix(in srgb, var(--pine) 72%, transparent) 100%);pointer-events:none;}
+  .video-band .caption{position:absolute;left:0;right:0;bottom:0;padding:0 32px 46px;text-align:center;pointer-events:none;}
+  .video-band .caption .eyebrow{color:var(--honey);display:inline-block;margin-bottom:12px;}
+  .video-band .caption h3{font-family:'Fraunces',serif;font-weight:500;color:var(--paper);font-size:clamp(1.7rem,3.6vw,2.7rem);text-shadow:0 2px 24px rgba(0,0,0,0.35);}
+  .video-band .caption h3 em{color:color-mix(in srgb, var(--honey) 78%, white);}
+  .video-band .sound{position:absolute;top:22px;right:24px;z-index:3;pointer-events:auto;display:flex;align-items:center;gap:8px;background:color-mix(in srgb, var(--pine) 50%, transparent);backdrop-filter:blur(6px);border:1px solid rgba(251,246,238,0.25);color:var(--paper);border-radius:100px;padding:9px 16px 9px 13px;font-family:'Mulish',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.04em;cursor:pointer;transition:background .2s;}
+  .video-band .sound:hover{background:color-mix(in srgb, var(--pine) 75%, transparent);}
+  .video-band .sound svg{width:15px;height:15px;}
+
+  /* ---------- Weekend strip ---------- */
+  .weekend{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .wk-card{background:var(--paper);border:1px solid var(--line-soft);border-radius:18px;padding:34px 30px;}
+  .wk-card .day{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--coral-deep);margin-bottom:4px;}
+  .wk-card .label{font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--pine-soft);opacity:0.7;margin-bottom:16px;}
+  .wk-card h4{font-size:1.15rem;font-weight:600;font-family:'Mulish',sans-serif;margin-bottom:8px;}
+  .wk-card p{color:var(--text-soft);font-size:0.96rem;}
+  @media (max-width:760px){.weekend{grid-template-columns:1fr;}}
+
+  /* ---------- Venue ---------- */
+  .venue-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:44px;align-items:center;}
+  .venue-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
+  .venue-photos .p{border-radius:16px;overflow:hidden;box-shadow:0 18px 40px -24px color-mix(in srgb, var(--pine) 40%, transparent);}
+  .venue-photos .p img{width:100%;height:100%;object-fit:cover;}
+  .venue-photos .big{grid-column:1 / 3;aspect-ratio:16/10;}
+  .venue-photos .sm{aspect-ratio:1/1;}
+  .venue-facts{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .venue-facts .fact{border-top:2px solid var(--coral);padding-top:12px;}
+  .venue-facts .fact b{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--pine);font-weight:500;}
+  .venue-facts .fact span{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-soft);font-weight:700;}
+  @media (max-width:820px){.venue-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Team ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .member .avatar{aspect-ratio:4/5;border-radius:16px;overflow:hidden;margin-bottom:16px;box-shadow:0 18px 40px -24px color-mix(in srgb, var(--pine) 40%, transparent);background:var(--sage-panel);}
+  .member .avatar img{width:100%;height:100%;object-fit:cover;}
+  .member h4{font-size:1.12rem;font-weight:700;}
+  .member .role{font-size:11.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--coral-deep);font-weight:800;margin:6px 0 10px;}
+  .member p{color:var(--text-soft);font-size:0.93rem;}
+  @media (max-width:900px){.team-grid{grid-template-columns:1fr 1fr;gap:30px;}}
+  @media (max-width:520px){.team-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto;}}
+
+  /* ---------- Pricing ---------- */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .price-card{border-radius:22px;padding:44px 40px;display:flex;flex-direction:column;border:1px solid var(--line-soft);}
+  .price-card.house{background:var(--pine);color:var(--paper);border-color:transparent;position:relative;overflow:hidden;}
+  .price-card.house::after{content:"";position:absolute;top:-40%;right:-30%;width:70%;height:80%;background:radial-gradient(circle,color-mix(in srgb, var(--honey) 30%, transparent),transparent 65%);}
+  .price-card.camp{background:var(--paper);}
+  .price-card .tier{font-size:11.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral-deep);}
+  .price-card.house .tier{color:var(--honey);}
+  .price-card h3{font-size:1.5rem;margin:8px 0 16px;}
+  .price-card .amount{font-family:'Fraunces',serif;font-size:2.9rem;display:flex;align-items:baseline;gap:12px;position:relative;z-index:1;}
+  .price-card .amount .was{font-size:1.15rem;text-decoration:line-through;opacity:0.5;font-family:'Mulish',sans-serif;font-weight:600;}
+  .price-card .amount-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;opacity:0.7;font-weight:700;}
+  .price-card ul{list-style:none;margin:26px 0 30px;flex:1;position:relative;z-index:1;}
+  .price-card li{padding:10px 0 10px 24px;position:relative;font-size:0.96rem;border-top:1px solid var(--line-soft);}
+  .price-card.house li{border-top:1px solid rgba(251,246,238,0.15);}
+  .price-card li:first-child{border-top:none;}
+  .price-card li::before{content:"✦";position:absolute;left:0;top:11px;font-size:11px;color:var(--coral);}
+  .price-card.house li::before{color:var(--honey);}
+  @media (max-width:760px){.price-grid{grid-template-columns:1fr;}}
+
+  .note-box{margin-top:26px;padding:22px 26px;border-radius:16px;background:var(--rose);color:var(--pine-soft);font-size:0.96rem;}
+  .note-box b{color:var(--pine);}
+
+  /* ---------- Weekly call ---------- */
+  .call-band{background:var(--paper-warm);border-radius:24px;padding:66px 48px;text-align:center;}
+  .call-band .eyebrow{display:inline-block;margin-bottom:14px;}
+  .call-band h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--pine);max-width:620px;margin:0 auto;}
+  .call-band p{margin:18px auto 30px;color:var(--text-soft);max-width:500px;}
+
+  /* ---------- Final CTA ---------- */
+  .final{background:var(--pine);border-radius:28px;padding:96px 32px;text-align:center;position:relative;overflow:hidden;}
+  .final::before{content:"";position:absolute;bottom:-30%;left:50%;transform:translateX(-50%);width:120%;height:80%;background:radial-gradient(ellipse at center,color-mix(in srgb, var(--coral) 34%, transparent),transparent 60%);}
+  .final .inner{position:relative;z-index:1;}
+  .final .eyebrow{color:var(--honey);display:inline-block;margin-bottom:16px;}
+  .final h2{font-size:clamp(2rem,4.6vw,3.2rem);color:var(--paper);max-width:640px;margin:0 auto 18px;}
+  .final p{color:rgba(251,246,238,0.78);max-width:500px;margin:0 auto 34px;}
+  .final .fineprint{margin-top:24px;font-size:12.5px;color:rgba(251,246,238,0.55);}
+
+  footer{padding:60px 32px 44px;text-align:center;color:var(--text-soft);font-size:13px;}
+  footer .mark{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--pine);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:9px;}
+  footer .mark .seed{width:8px;height:8px;border-radius:50%;background:var(--coral);}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="mark"><span class="seed"></span>The Reunion</div>
+  <a class="cta-mini" href="#reserve">Reserve a Spot</a>
+</header>
+
+<!-- HERO -->
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">A Relationship Transformation Retreat</span>
+      <h1>Come home to <em>each other.</em> Come home to <em>yourself.</em></h1>
+      <p class="tagline">A weekend in the Vermont hills where deep work meets real joy — breathwork, honest conversation, sauna, shared tables, and dancing under the stars.</p>
+      <div class="meta">
+        <span class="pill">Early August 2026</span>
+        <span class="pill">Near Brattleboro, VT</span>
+        <span class="pill">14 house beds + camping</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#reserve">Secure Your Spot</a>
+        <a class="btn btn-ghost" href="#call">Join a Free Call First</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="assets/dinner.jpg" alt="A candlelit dinner at the retreat house"></div>
+      <div class="tag"><b>Fri–Sun</b> &nbsp;on the land</div>
+    </div>
+  </section>
+</div>
+
+<!-- STORY -->
+<div class="wrap">
+  <section id="story">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why This Weekend Exists</span>
+      <h2>We're fluent in almost everything — except the relationships that matter most.</h2>
+      <p>You can run a home, a career, a full life, and still feel unseen by the person across the table. This isn't a fix-it workshop. It's a chance to slow down long enough to feel what's actually there — and to remember how to open.</p>
+    </div>
+
+    <div class="story-grid reveal">
+      <div class="story-col pain">
+        <span class="eyebrow">Where you might be</span>
+        <h3>The pattern that keeps repeating</h3>
+        <p>Familiar, and quietly exhausting.</p>
+        <ul>
+          <li>Conversations that circle but never land</li>
+          <li>Closeness that starts to feel like performance</li>
+          <li>Wanting to be known — but bracing instead</li>
+          <li>Carrying old wounds into new rooms</li>
+        </ul>
+      </div>
+      <div class="story-col result">
+        <span class="eyebrow">What becomes possible</span>
+        <h3>The shift people come here for</h3>
+        <p>Not a fix. A return.</p>
+        <ul>
+          <li>Language for what you actually feel</li>
+          <li>A body that can stay present in hard moments</li>
+          <li>A community that reflects you honestly</li>
+          <li>Permission to be unguarded and playful again</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="community reveal">
+      <div class="photo"><img src="assets/group.jpg" alt="Three of the facilitators embracing"></div>
+      <div>
+        <span class="eyebrow">You won't do it alone</span>
+        <h3>Held by a circle that <em>truly cares.</em></h3>
+        <p>This is an intentionally small gathering of people who want the same thing you do — to grow, to be honest, and to be met. The work goes deep because the container is safe, warm, and real.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ETHOS: RETREAT & FESTIVAL -->
+<div class="wrap">
+  <section id="ethos" style="padding-bottom:40px;">
+    <div class="ethos reveal">
+      <span class="eyebrow">A Retreat &amp; A Festival</span>
+      <h2>Come to transform. Stay to <em>play.</em></h2>
+      <p class="lede">There's real depth here — breath, honesty, the tender things we usually avoid. But this was never meant to be a weekend of unearthing heavy stuff and crying in a circle. It's a celebration, too: between the deep moments there's a sauna to melt into, a bonfire under the stars, long meals, music, and dancing in the barn till late.</p>
+      <div class="chips">
+        <span class="chip deep">Breathwork</span>
+        <span class="chip play">Wood-fired sauna</span>
+        <span class="chip deep">Honest circles</span>
+        <span class="chip play">Bonfire nights</span>
+        <span class="chip deep">Inner reconnection</span>
+        <span class="chip play">Shared feasts</span>
+        <span class="chip play">Dancing till late</span>
+        <span class="chip play">Rest &amp; delight</span>
+      </div>
+      <p class="closer">Transformation and delight aren't opposites — <b>they open the same door.</b></p>
+    </div>
+  </section>
+</div>
+
+<div class="sunrise"><svg viewBox="0 0 190 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1B8A7E"/><stop offset="1" stop-color="#D2A63C"/></linearGradient></defs>
+  <line x1="0" y1="38" x2="66" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <line x1="124" y1="38" x2="190" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <path d="M76 38 A19 19 0 0 1 114 38" fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round"/>
+  <g stroke="url(#sg)" stroke-width="2" stroke-linecap="round"><line x1="95" y1="8" x2="95" y2="1"/><line x1="72" y1="17" x2="67" y2="12"/><line x1="118" y1="17" x2="123" y2="12"/></g>
+  <circle cx="95" cy="38" r="2.6" fill="#1B8A7E"/></svg></div>
+
+<!-- EXPERIENCE ARC -->
+<div class="wrap">
+  <section id="experience" style="padding-top:20px;">
+    <div class="arc-section">
+      <div class="wrap">
+        <div class="section-head reveal" style="margin-bottom:40px;">
+          <span class="eyebrow">The Arc of the Day</span>
+          <h2>Five movements, from opening to celebration.</h2>
+          <p>The heart of the retreat is one full day of transformation — paced to move between depth and delight, never all heavy, never all light.</p>
+        </div>
+        <div class="arc reveal">
+          <div class="movement">
+            <div class="num">01</div>
+            <div>
+              <h4>Opening Circle</h4>
+              <p>We gather as one group to build trust and name the patterns we all share — what relationship really is, and the kind of partnership we're all quietly reaching for.</p>
+            </div>
+          </div>
+          <div class="movement">
+            <div class="num">02</div>
+            <div>
+              <h4>Understanding Each Other</h4>
+              <p>Men and women move into separate spaces to learn each other's inner worlds with curiosity and care — the needs, rhythms, and longings we so often misread.</p>
+            </div>
+          </div>
+          <div class="movement">
+            <div class="num">03</div>
+            <div>
+              <h4>Breathwork Journey</h4>
+              <p>A guided holotropic breathwork session to move beneath the thinking mind, surface what the body has been holding, and find the root of the pattern.</p>
+            </div>
+          </div>
+          <div class="movement">
+            <div class="num">04</div>
+            <div>
+              <h4>Reconnection</h4>
+              <p>Gentle inner work to come home to yourself — feeling held, supported, and whole. Not seeking. Full.</p>
+            </div>
+          </div>
+          <div class="movement">
+            <div class="num">05</div>
+            <div>
+              <h4>True Partnership &amp; Celebration</h4>
+              <p>We anchor a felt experience of true partnership, then let it all move — music, dance, and a proper celebration of the reunion of masculine and feminine.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VIDEO BAND -->
+<section class="video-band" aria-label="Dancing in the barn" style="padding:0;">
+  <video id="danceVid" autoplay muted loop playsinline preload="metadata" poster="assets/dance-poster.jpg">
+    <source src="assets/dance.mp4" type="video/mp4">
+  </video>
+  <div class="veil"></div>
+  <button class="sound" id="soundBtn" type="button" aria-label="Toggle sound">
+    <svg id="soundIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    <span id="soundLabel">Sound on</span>
+  </button>
+  <div class="caption">
+    <span class="eyebrow">Saturday Night</span>
+    <h3>When the work becomes <em>celebration.</em></h3>
+  </div>
+</section>
+
+<!-- WEEKEND -->
+<div class="wrap">
+  <section id="weekend" style="padding-top:80px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Your Weekend</span>
+      <h2>Three days on the land.</h2>
+    </div>
+    <div class="weekend reveal">
+      <div class="wk-card">
+        <div class="day">Friday</div>
+        <div class="label">Arrival</div>
+        <h4>Gather &amp; settle</h4>
+        <p>Arrive in the afternoon or evening, find your bed or your tent, and ease in over tea and light snacks. Nothing is asked of you tonight but presence.</p>
+      </div>
+      <div class="wk-card">
+        <div class="day">Saturday</div>
+        <div class="label">Transformation</div>
+        <h4>The full day</h4>
+        <p>The five movements, a grounding brunch and a dinner together, little delights between sessions — and as night falls, the sauna, a bonfire, and dancing.</p>
+      </div>
+      <div class="wk-card">
+        <div class="day">Sunday</div>
+        <div class="label">Integration</div>
+        <h4>A gentle close</h4>
+        <p>A light breakfast, an unhurried morning, and space to integrate what surfaced before you carry it home with you.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sunrise"><svg viewBox="0 0 190 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1B8A7E"/><stop offset="1" stop-color="#D2A63C"/></linearGradient></defs>
+  <line x1="0" y1="38" x2="66" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <line x1="124" y1="38" x2="190" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <path d="M76 38 A19 19 0 0 1 114 38" fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round"/>
+  <g stroke="url(#sg)" stroke-width="2" stroke-linecap="round"><line x1="95" y1="8" x2="95" y2="1"/><line x1="72" y1="17" x2="67" y2="12"/><line x1="118" y1="17" x2="123" y2="12"/></g>
+  <circle cx="95" cy="38" r="2.6" fill="#1B8A7E"/></svg></div>
+
+<!-- VENUE -->
+<div class="wrap">
+  <section id="venue" style="padding-top:20px;">
+    <div class="venue-grid">
+      <div class="venue-photos reveal">
+        <div class="p big"><img src="assets/play.jpg" alt="Playful movement in the barn"></div>
+        <div class="p sm"><img src="assets/barn.jpg" alt="The retreat barn in the Vermont hills"></div>
+        <div class="p sm"><img src="assets/dinner.jpg" alt="The shared dinner table"></div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">The Venue</span>
+        <h2 style="margin-top:14px;font-size:clamp(1.8rem,3.4vw,2.5rem);">A private homestead, held with care.</h2>
+        <p style="margin-top:18px;color:var(--text-soft);">Set on quiet land near Brattleboro, Vermont — open sky, a wood-fired sauna, a barn made for movement, and a long table made for lingering. Stay in the house or camp under the trees. This is a small, intentionally-held gathering on land we trust, not a commercial venue.</p>
+        <div class="venue-facts">
+          <div class="fact"><b>14</b><span>House beds</span></div>
+          <div class="fact"><b>Open</b><span>Camping on the land</span></div>
+          <div class="fact"><b>1</b><span>Wood-fired sauna</span></div>
+          <div class="fact"><b>2</b><span>Nights on site</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sunrise"><svg viewBox="0 0 190 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1B8A7E"/><stop offset="1" stop-color="#D2A63C"/></linearGradient></defs>
+  <line x1="0" y1="38" x2="66" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <line x1="124" y1="38" x2="190" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <path d="M76 38 A19 19 0 0 1 114 38" fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round"/>
+  <g stroke="url(#sg)" stroke-width="2" stroke-linecap="round"><line x1="95" y1="8" x2="95" y2="1"/><line x1="72" y1="17" x2="67" y2="12"/><line x1="118" y1="17" x2="123" y2="12"/></g>
+  <circle cx="95" cy="38" r="2.6" fill="#1B8A7E"/></svg></div>
+
+<!-- TEAM -->
+<div class="wrap">
+  <section id="team" style="padding-top:20px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Who's Holding This Space</span>
+      <h2>A small team, all doing this work ourselves.</h2>
+      <p>Nobody here facilitates from the outside looking in. We bring our own reflections, our own questions, and our own growth into the room with you.</p>
+    </div>
+    <div class="team-grid reveal">
+      <div class="member">
+        <div class="avatar"><img src="assets/albina.jpg" alt="Albina Venyaminova" style="object-position:68% center;"></div>
+        <h4>Albina Venyaminova</h4>
+        <div class="role">Lead Facilitator &amp; Host</div>
+        <p>A behavioral transformation specialist who holds the overall container and guides the deeper work with a grounded, structured hand.</p>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="assets/brijesh.jpg" alt="Brijesh Patel"></div>
+        <h4>Brijesh Patel</h4>
+        <div class="role">Masculine Embodiment</div>
+        <p>Leads the men's work and conversations on relationship and dating, bringing a grounded, embodied masculine presence to the weekend.</p>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="assets/fabi.jpg" alt="Fabiana Maciel"></div>
+        <h4>Fabiana Maciel</h4>
+        <div class="role">Facilitation &amp; Access</div>
+        <p>Keeps the weekend warm and reachable, championing flexible options so budget is never the reason someone stays home.</p>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="assets/rasa.jpg" alt="Rasa"></div>
+        <h4>Rasa</h4>
+        <div class="role">Somatic Guide &amp; Nourishment</div>
+        <p>A sacred-pause doula who tends the body of the group — pacing the weekend's rhythm and the food that nourishes it.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sunrise"><svg viewBox="0 0 190 46" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1B8A7E"/><stop offset="1" stop-color="#D2A63C"/></linearGradient></defs>
+  <line x1="0" y1="38" x2="66" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <line x1="124" y1="38" x2="190" y2="38" stroke="color-mix(in srgb, #173D3B 18%, transparent)" stroke-width="1"/>
+  <path d="M76 38 A19 19 0 0 1 114 38" fill="none" stroke="url(#sg)" stroke-width="2.4" stroke-linecap="round"/>
+  <g stroke="url(#sg)" stroke-width="2" stroke-linecap="round"><line x1="95" y1="8" x2="95" y2="1"/><line x1="72" y1="17" x2="67" y2="12"/><line x1="118" y1="17" x2="123" y2="12"/></g>
+  <circle cx="95" cy="38" r="2.6" fill="#1B8A7E"/></svg></div>
+
+<!-- PRICING -->
+<div class="wrap">
+  <section id="pricing" style="padding-top:20px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Find Your Spot</span>
+      <h2>Two ways to stay on the land.</h2>
+      <p>Choose the house for full comfort, or camp under the trees at a lower rate. Everyone shares the exact same weekend — the only difference is where you sleep.</p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="price-card house">
+        <div class="tier">House · 14 beds</div>
+        <h3>Stay in the house</h3>
+        <div class="amount">$347 <span class="was">$447</span></div>
+        <div class="amount-label">Early bird · per person</div>
+        <ul>
+          <li>A bed inside the main house</li>
+          <li>All meals, snacks &amp; refreshments</li>
+          <li>Full access to sauna &amp; bonfire</li>
+          <li>The complete weekend program</li>
+        </ul>
+        <a class="btn btn-primary" href="#reserve">Reserve a House Bed</a>
+      </div>
+      <div class="price-card camp">
+        <div class="tier">Camping · on the land</div>
+        <h3>Camp under the trees</h3>
+        <div class="amount">$278</div>
+        <div class="amount-label">Early bird · per person</div>
+        <ul>
+          <li>Your own tent space on the land</li>
+          <li>All meals, snacks &amp; refreshments</li>
+          <li>Full access to sauna &amp; bonfire</li>
+          <li>The complete weekend program</li>
+        </ul>
+        <a class="btn btn-ghost" href="#reserve">Reserve a Camp Spot</a>
+      </div>
+    </div>
+    <div class="note-box reveal">
+      <b>Bringing someone?</b> Ask about our plus-one discount. &nbsp;<b>Tight on budget?</b> A limited number of sliding-scale spots are available — reach out before you rule it out.
+    </div>
+  </section>
+</div>
+
+<!-- WEEKLY CALL -->
+<div class="wrap">
+  <section id="call" style="padding-top:20px;">
+    <div class="call-band reveal">
+      <span class="eyebrow">Not Ready to Commit?</span>
+      <h2>Join a free weekly circle call.</h2>
+      <p>Each week we host a short call to walk through what the weekend holds, answer your questions, and let you meet the team before you decide. No pressure, no pitch — just a place to start.</p>
+      <a class="btn btn-primary" href="#reserve">Get the Call Link</a>
+    </div>
+  </section>
+</div>
+
+<!-- FINAL CTA -->
+<div class="wrap">
+  <section id="reserve" style="padding-top:20px;">
+    <div class="final reveal">
+      <div class="inner">
+        <span class="eyebrow">Reserve Your Spot</span>
+        <h2>The circle only forms once enough of us say yes.</h2>
+        <p>This gathering happens once we reach our minimum circle size. Reserve your deposit now — if we don't reach the threshold, you'll receive a full refund or can hold your deposit for a future date.</p>
+        <a class="btn btn-primary" href="#" style="background:var(--coral);">Secure Your Spot — $100 Deposit</a>
+        <div class="fineprint">Fully refundable if the retreat doesn't reach its minimum.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="mark"><span class="seed"></span>The Reunion</div>
+  <div>A relationship transformation retreat · Near Brattleboro, VT · Early August 2026</div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40);});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const vid=document.getElementById('danceVid'),sBtn=document.getElementById('soundBtn'),sLabel=document.getElementById('soundLabel'),sIcon=document.getElementById('soundIcon');
+  const onIcon='<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+  const offIcon='<path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+  sBtn.addEventListener('click',()=>{
+    vid.muted=!vid.muted;
+    if(!vid.muted){vid.play();sLabel.textContent='Sound off';sIcon.innerHTML=onIcon;}
+    else{sLabel.textContent='Sound on';sIcon.innerHTML=offIcon;}
+  });
+</script>
+</body>
+</html>
